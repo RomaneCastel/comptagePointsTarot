@@ -3,9 +3,16 @@ package rcgw.appcomptageptstarot;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.widget.Button;
 
 public class compteur extends AppCompatActivity {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) { //affichage menu dans l'activité
+        getMenuInflater().inflate(R.menu.menu_compteur, menu);
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

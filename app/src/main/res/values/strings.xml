@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">appComptagePtsTarot</string>
+    <string name="troisjoueurs">3 joueurs</string>
+    <string name="quatrejoueurs">4 joueurs</string>
+    <string name="cinqjoueurs">5 joueurs</string>
 </resources>
