@@ -53,7 +53,48 @@
                 android:text="Validate" />
 
 
+            <LinearLayout
+                android:id="@+id/contrat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="68dp"
+                android:gravity="center">
 
+
+                <Button
+                    android:id="@+id/petite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:background="#046220"
+                    android:text="Petite" />
+
+                <Button
+                    android:id="@+id/Garde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#028329"
+                    android:text="Garde" />
+
+                <Button
+                    android:id="@+id/GardeSans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:background="#00B035"
+                    android:text="Garde Sans" />
+
+                <Button
+                    android:id="@+id/GardeContre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:background="#27E35F"
+                    android:text="Garde Contre" />
+            </LinearLayout>
 
 
         </LinearLayout>
