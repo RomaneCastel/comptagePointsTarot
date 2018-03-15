@@ -3,4 +3,8 @@
     <string name="troisjoueurs">3 joueurs</string>
     <string name="quatrejoueurs">4 joueurs</string>
     <string name="cinqjoueurs">5 joueurs</string>
+
+    <string name="startGame">démarrer</string>
+    <string name="addPlayer">ajouter un joueur</string>
+    <string name="player">joueur</string>
 </resources>
