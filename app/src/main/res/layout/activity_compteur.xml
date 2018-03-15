@@ -14,87 +14,205 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/exit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="exit"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="0dp" />
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/Preneur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="Preneur" />
 
-            <LinearLayout
-                android:id="@+id/bouttonPreneur"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="68dp">
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/bouttonPreneur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="68dp">
 
 
-            </LinearLayout>
-
-
-            <Button
-                android:id="@+id/validate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="Validate" />
+                </LinearLayout>
+            </HorizontalScrollView>
 
 
             <LinearLayout
                 android:id="@+id/contrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:orientation="horizontal"
                 tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="68dp"
-                android:gravity="center">
+                tools:layout_editor_absoluteY="68dp">
 
 
-                <Button
+                <ToggleButton
                     android:id="@+id/petite"
                     android:layout_width="wrap_content"
-                    android:layout_height="55dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#046220"
-                    android:text="Petite" />
+                    android:text="Petit"
+                    android:textOff="Petite"
+                    android:textOn="Petite" />
 
-                <Button
-                    android:id="@+id/Garde"
+                <ToggleButton
+                    android:id="@+id/garde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ToggleButton"
+                    android:textOff="Garde"
+                    android:textOn="Garde" />
+
+                <ToggleButton
+                    android:id="@+id/gardeSans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ToggleButton"
+                    android:textOff="Garde sans"
+                    android:textOn="Garde sans" />
+
+                <ToggleButton
+                    android:id="@+id/gardeContre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textOff="Garde contre"
+                    android:textOn="Garde contre" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/Appele"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Joueur appelé" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/bouttonAppele"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#028329"
-                    android:text="Garde" />
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/GardeSans"
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:background="#00B035"
-                    android:text="Garde Sans" />
+                </LinearLayout>
+            </HorizontalScrollView>
 
-                <Button
-                    android:id="@+id/GardeContre"
+            <TextView
+                android:id="@+id/points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Points" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/seekBar"
                     android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:background="#27E35F"
-                    android:text="Garde Contre" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Poignee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Poignées" />
+
+                <Button
+                    android:id="@+id/poignee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="+" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/simple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Simple" />
+
+                    <Button
+                        android:id="@+id/attaqueSimple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Attaque" />
+
+                    <Button
+                        android:id="@+id/defenseSimple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Défense" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/petitAuBout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Petit au bout" />
+
+                <Button
+                    android:id="@+id/attaquePetit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Attaque" />
+
+                <Button
+                    android:id="@+id/defensePetit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Défense" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/validate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Valider" />
 
 
         </LinearLayout>
