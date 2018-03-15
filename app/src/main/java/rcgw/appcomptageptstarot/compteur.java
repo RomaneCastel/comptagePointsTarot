@@ -15,11 +15,6 @@ public class compteur extends AppCompatActivity {
 
     private String[] joueurs;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) { //affichage menu dans l'activité
-        getMenuInflater().inflate(R.menu.menu_compteur, menu);
-        return true;
-    }
 
     public boolean nbrjoueurs (MenuItem item){
         LinearLayout preneur = (LinearLayout) findViewById(R.id.bouttonPreneur);
