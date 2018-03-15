@@ -32,9 +32,31 @@ public class Menu extends AppCompatActivity {
                 number.setText(getResources().getString(R.string.player) + " " + playerNb);
                 EditText name = new EditText(getApplicationContext());
                 name.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
+                Button suppr = new Button(getApplicationContext());
+                suppr.setText(R.string.del);
                 onePlayer.addView(number);
                 onePlayer.addView(name);
+                onePlayer.addView(suppr);
                 playersLayout.addView(onePlayer, playerNb-1);
+                suppr.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //suppression de l'entrée du joueur
+                        View l = (View) view.getParent();
+                        LinearLayout playersLayout = findViewById(R.id.players);
+                        playersLayout.removeView(l);
+
+                        //renommage des autres entrées
+                        int playerNb = playersLayout.getChildCount();
+                        String[] names = new String[playerNb-1];
+                        for (int i=0; i<playerNb-1;i++){
+                            LinearLayout onePlayer = (LinearLayout) playersLayout.getChildAt(i);
+                            ((TextView) onePlayer.getChildAt(0)).setText(getResources().getString(R.string.player) + " " + (i+1));
+                        }
+
+                    }
+                });
+
             }
         });
 

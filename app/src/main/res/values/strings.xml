@@ -6,5 +6,6 @@
 
     <string name="startGame">démarrer</string>
     <string name="addPlayer">ajouter un joueur</string>
+    <string name="del">supprimer</string>
     <string name="player">joueur</string>
 </resources>
