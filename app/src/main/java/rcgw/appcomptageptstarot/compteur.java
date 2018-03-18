@@ -4,20 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
-
-import java.util.ArrayList;
 
 public class compteur extends AppCompatActivity {
 
@@ -30,7 +22,7 @@ public class compteur extends AppCompatActivity {
             }
     };*/
 
-    private CompoundButton.OnCheckedChangeListener changeCheckerContrat = new CompoundButton.OnCheckedChangeListener() {
+    private CompoundButton.OnCheckedChangeListener changeChecker = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if(isChecked){
@@ -66,7 +58,7 @@ public class compteur extends AppCompatActivity {
             player.setId(i);
             preneur.addView(player);
             player.setId(i);
-            //player.setOnCheckedChangeListener(onCheckedChangeListener);
+            player.setOnCheckedChangeListener(changeChecker);
             player.setTextOn(joueurs[i]);
             player.setTextOff(joueurs[i]);
         }
@@ -77,7 +69,7 @@ public class compteur extends AppCompatActivity {
         for(int i=0; i<joueurs.length; i++) {
             ToggleButton player = new ToggleButton(this);
             player.setText(joueurs[i]);
-            player.setId(i);
+            player.setOnCheckedChangeListener(changeChecker);
             appele.addView(player);
             player.setId(i+joueurs.length);
         }
@@ -136,10 +128,10 @@ public class compteur extends AppCompatActivity {
         ToggleButton garde = (ToggleButton) findViewById(R.id.garde);
         ToggleButton gardeSans = (ToggleButton) findViewById(R.id.gardeSans);
         ToggleButton gardeContre = (ToggleButton) findViewById(R.id.gardeContre);
-        petite.setOnCheckedChangeListener(changeCheckerContrat);
-        garde.setOnCheckedChangeListener(changeCheckerContrat);
-        gardeSans.setOnCheckedChangeListener(changeCheckerContrat);
-        gardeContre.setOnCheckedChangeListener(changeCheckerContrat);
+        petite.setOnCheckedChangeListener(changeChecker);
+        garde.setOnCheckedChangeListener(changeChecker);
+        gardeSans.setOnCheckedChangeListener(changeChecker);
+        gardeContre.setOnCheckedChangeListener(changeChecker);
         ToggleButton seePoignee = (ToggleButton) findViewById(R.id.seePoignee);
         seePoignee.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
