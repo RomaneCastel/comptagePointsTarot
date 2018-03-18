@@ -114,14 +114,40 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/attaqueScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/defenseScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textAlignment="center" />
+                </LinearLayout>
 
                 <SeekBar
-                    android:id="@+id/seekBar"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/scores"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:max="91"
+                    android:progress="45" />
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -129,25 +155,29 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/Poignee"
+                    android:id="@+id/poignees"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Poignées" />
 
-                <Button
-                    android:id="@+id/poignee"
-                    android:layout_width="match_parent"
+                <ToggleButton
+                    android:id="@+id/seePoignee"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="+" />
+                    android:checked="false"
+                    android:textOff="+"
+                    android:textOn="+" />
+
             </LinearLayout>
 
-
             <LinearLayout
+                android:id="@+id/poigneeShow"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -155,25 +185,91 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/simple"
+                        android:id="@+id/simplePoignee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Simple" />
 
-                    <Button
+                    <ToggleButton
                         android:id="@+id/attaqueSimple"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Attaque" />
+                        android:text="Attaque"
+                        android:textOff="Attaque"
+                        android:textOn="Attaque" />
 
-                    <Button
+                    <ToggleButton
                         android:id="@+id/defenseSimple"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Défense" />
+                        android:text="Defense"
+                        android:textOff="Défense"
+                        android:textOn="Défense" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/doublePoignee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Double" />
+
+                    <ToggleButton
+                        android:id="@+id/attaqueDouble"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Attaque"
+                        android:textOff="Attaque"
+                        android:textOn="Attaque" />
+
+                    <ToggleButton
+                        android:id="@+id/defenseDouble"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Defense"
+                        android:textOff="Défense"
+                        android:textOn="Défense" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/triplePoingee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Triple" />
+
+                    <ToggleButton
+                        android:id="@+id/attaqueTriple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Attaque"
+                        android:textOff="Attaque"
+                        android:textOn="Attaque" />
+
+                    <ToggleButton
+                        android:id="@+id/defenseTriple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Defense"
+                        android:textOff="Défense"
+                        android:textOn="Défense" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -206,6 +302,75 @@
 
             </LinearLayout>
 
+
+            <LinearLayout
+                android:id="@+id/misereShowLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/misere"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Misères" />
+
+                <ToggleButton
+                    android:id="@+id/seeMisere"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="ToggleButton"
+                    android:textOff="+"
+                    android:textOn="+" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/misereShow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/simpleMisere"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Simple" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/buttonMisereSimple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/doubleMisere"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Double" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/buttonMisereDouble"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"></LinearLayout>
+                </HorizontalScrollView>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/validate"

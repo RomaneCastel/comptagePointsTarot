@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -19,12 +22,41 @@ import java.util.ArrayList;
 public class compteur extends AppCompatActivity {
 
     private String[] joueurs;
-    private CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener(){
+
+    /*private CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener(){
         @Override
         public void onCheckedChanged(CompoundButton button, boolean isChecked) {
 
             }
+    };*/
+
+    private CompoundButton.OnCheckedChangeListener changeCheckerContrat = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if(isChecked){
+                LinearLayout contrat = (LinearLayout) buttonView.getParent();
+                for(int i=0; i<contrat.getChildCount(); i++){
+                    ((ToggleButton) contrat.getChildAt(i)).setChecked(false);
+                }
+                buttonView.setChecked(true);
+
+            }
+        }
     };
+
+   /* private CompoundButton.OnCheckedChangeListener changeCheckerPoignee = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if(isChecked){
+                LinearLayout poignee = (LinearLayout) buttonView.getParent();
+                for(int i=0; i<3; i++){
+                    ((ToggleButton) ((LinearLayout) (poignee.getChildAt(i))).getChildAt(0)).setChecked(false);
+                }
+                buttonView.setChecked(true);
+                Log.i("oncheck", "utilise onchekpoignee");
+            }
+        }
+    };*/
 
     public void nbrjoueurs (){
         LinearLayout preneur = (LinearLayout) findViewById(R.id.bouttonPreneur);
@@ -34,7 +66,9 @@ public class compteur extends AppCompatActivity {
             player.setId(i);
             preneur.addView(player);
             player.setId(i);
-            player.setOnCheckedChangeListener(onCheckedChangeListener);
+            //player.setOnCheckedChangeListener(onCheckedChangeListener);
+            player.setTextOn(joueurs[i]);
+            player.setTextOff(joueurs[i]);
         }
     }
 
@@ -49,6 +83,15 @@ public class compteur extends AppCompatActivity {
         }
     }
 
+    public void joueursMisere (LinearLayout layout){
+        for(int i=0; i<joueurs.length; i++) {
+            ToggleButton player = new ToggleButton(this);
+            player.setText(joueurs[i]);
+            player.setId(i);
+            layout.addView(player);
+            player.setId(i+joueurs.length);
+        }
+    }
 
 
 
@@ -64,7 +107,81 @@ public class compteur extends AppCompatActivity {
         }
         nbrjoueurs();
         joueursAppelé();
+        SeekBar scores = (SeekBar) findViewById(R.id.scores);
+        TextView attaqueScore = (TextView) findViewById(R.id.attaqueScore);
+        TextView defenseScore = (TextView) findViewById(R.id.defenseScore);
+        attaqueScore.setText("attaque :" + 45);
+        defenseScore.setText("défense :" +46);
+        scores.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                int seekBarValue= seekBar.getProgress(); // get progress value from the Seek bar
+                TextView attaqueScore = (TextView) findViewById(R.id.attaqueScore);
+                TextView defenseScore = (TextView) findViewById(R.id.defenseScore);
+                attaqueScore.setText("attaque :" + seekBarValue);
+                defenseScore.setText("défense :" + (91-seekBarValue));
+            }
 
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        ToggleButton petite = (ToggleButton) findViewById(R.id.petite);
+        ToggleButton garde = (ToggleButton) findViewById(R.id.garde);
+        ToggleButton gardeSans = (ToggleButton) findViewById(R.id.gardeSans);
+        ToggleButton gardeContre = (ToggleButton) findViewById(R.id.gardeContre);
+        petite.setOnCheckedChangeListener(changeCheckerContrat);
+        garde.setOnCheckedChangeListener(changeCheckerContrat);
+        gardeSans.setOnCheckedChangeListener(changeCheckerContrat);
+        gardeContre.setOnCheckedChangeListener(changeCheckerContrat);
+        ToggleButton seePoignee = (ToggleButton) findViewById(R.id.seePoignee);
+        seePoignee.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                LinearLayout poigneeShow = (LinearLayout) findViewById(R.id.poigneeShow);
+                if(isChecked){
+                    poigneeShow.setVisibility(View.VISIBLE);
+                }
+                else{
+                    poigneeShow.setVisibility(View.GONE);
+                }
+            }
+        });
+        ToggleButton seeMisere = (ToggleButton) findViewById(R.id.seeMisere);
+        seeMisere.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                LinearLayout misereShow = (LinearLayout) findViewById(R.id.misereShow);
+                if(isChecked){
+                    misereShow.setVisibility(View.VISIBLE);
+                }
+                else{
+                    misereShow.setVisibility(View.GONE);
+                }
+            }
+        });
+        /*ToggleButton attaqueSimple = (ToggleButton) findViewById(R.id.attaqueSimple);
+        ToggleButton attaqueDouble = (ToggleButton) findViewById(R.id.attaqueDouble);
+        ToggleButton attaqueTriple = (ToggleButton) findViewById(R.id.attaqueTriple);
+        ToggleButton defenseSimple = (ToggleButton) findViewById(R.id.defenseSimple);
+        ToggleButton defenseDouble = (ToggleButton) findViewById(R.id.defenseDouble);
+        ToggleButton defenseTriple = (ToggleButton) findViewById(R.id.defenseTriple);
+        attaqueSimple.setOnCheckedChangeListener(changeCheckerPoignee);
+        attaqueDouble.setOnCheckedChangeListener(changeCheckerPoignee);
+        attaqueTriple.setOnCheckedChangeListener(changeCheckerPoignee);
+        defenseSimple.setOnCheckedChangeListener(changeCheckerPoignee);
+        defenseDouble.setOnCheckedChangeListener(changeCheckerPoignee);
+        defenseTriple.setOnCheckedChangeListener(changeCheckerPoignee);*/
+        LinearLayout simpleMisere = (LinearLayout) findViewById(R.id.buttonMisereSimple);
+        LinearLayout doubleMisere = (LinearLayout) findViewById(R.id.buttonMisereDouble);
+        joueursMisere(simpleMisere);
+        joueursMisere(doubleMisere);
     }
 
 
