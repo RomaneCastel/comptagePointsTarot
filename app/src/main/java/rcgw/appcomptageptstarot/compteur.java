@@ -14,6 +14,11 @@ import android.widget.ToggleButton;
 public class compteur extends AppCompatActivity {
 
     private String[] joueurs;
+    private int joueur1Score;
+    private int joueur2Score;
+    private int joueur3Score;
+    private int joueur4Score;
+    private int joueur5Score;
 
     /*private CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener(){
         @Override
@@ -27,11 +32,12 @@ public class compteur extends AppCompatActivity {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if(isChecked){
                 LinearLayout contrat = (LinearLayout) buttonView.getParent();
-                for(int i=0; i<contrat.getChildCount(); i++){
-                    ((ToggleButton) contrat.getChildAt(i)).setChecked(false);
+                for(int i=0; i<contrat.getChildCount(); i++) {
+                    if (contrat.getChildAt(i) instanceof ToggleButton) {
+                        ((ToggleButton) contrat.getChildAt(i)).setChecked(false);
+                    }
                 }
                 buttonView.setChecked(true);
-
             }
         }
     };
@@ -49,6 +55,7 @@ public class compteur extends AppCompatActivity {
             }
         }
     };*/
+
 
     public void nbrjoueurs (){
         LinearLayout preneur = (LinearLayout) findViewById(R.id.bouttonPreneur);
@@ -72,6 +79,8 @@ public class compteur extends AppCompatActivity {
             player.setOnCheckedChangeListener(changeChecker);
             appele.addView(player);
             player.setId(i+joueurs.length);
+            player.setTextOn(joueurs[i]);
+            player.setTextOff(joueurs[i]);
         }
     }
 
@@ -82,9 +91,10 @@ public class compteur extends AppCompatActivity {
             player.setId(i);
             layout.addView(player);
             player.setId(i+joueurs.length);
+            player.setTextOn(joueurs[i]);
+            player.setTextOff(joueurs[i]);
         }
     }
-
 
 
     @Override
@@ -145,6 +155,10 @@ public class compteur extends AppCompatActivity {
                 }
             }
         });
+        ToggleButton attaquePetit = (ToggleButton) findViewById(R.id.attaquePetit);
+        ToggleButton defensePetit = (ToggleButton) findViewById(R.id.defensePetit);
+        attaquePetit.setOnCheckedChangeListener(changeChecker);
+        defensePetit.setOnCheckedChangeListener(changeChecker);
         ToggleButton seeMisere = (ToggleButton) findViewById(R.id.seeMisere);
         seeMisere.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

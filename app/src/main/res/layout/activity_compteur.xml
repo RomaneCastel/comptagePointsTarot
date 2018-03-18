@@ -273,6 +273,7 @@
                 </LinearLayout>
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -286,22 +287,25 @@
                     android:layout_weight="1"
                     android:text="Petit au bout" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/attaquePetit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Attaque" />
+                    android:text="Attaque"
+                    android:textOff="Attaque"
+                    android:textOn="Attaque" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/defensePetit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Défense" />
+                    android:text="Défense"
+                    android:textOff="Défense"
+                    android:textOn="Défense" />
 
             </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/misereShowLayout"
@@ -331,7 +335,8 @@
                 android:id="@+id/misereShow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/simpleMisere"
@@ -372,15 +377,93 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/validate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Valider" />
-
 
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/chelemShowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/chelem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Chelem" />
+
+        <ToggleButton
+            android:id="@+id/seeChelem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"
+            android:textOff="+"
+            android:textOn="+"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/chelemShow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ToggleButton
+                    android:id="@+id/notAnnoncedChelem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ToggleButton"
+                    android:textOff="Chelem réussi, non annoncé"
+                    android:textOn="Chelem réussi, non annoncé" />
+
+                <ToggleButton
+                    android:id="@+id/chelemSuccess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ToggleButton"
+                    android:textOff="Chelem réussi"
+                    android:textOn="Chelem réussi" />
+
+                <ToggleButton
+                    android:id="@+id/fallen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ToggleButton"
+                    android:textOff="Chelem échoué"
+                    android:textOn="Chelem échoué" />
+
+                <ToggleButton
+                    android:id="@+id/adversarySuccess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ToggleButton"
+                    android:textOff="Chelem réussi par la défense"
+                    android:textOn="Chelem réussi par la défense" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/validate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Valider" />
 
 </android.support.v7.widget.LinearLayoutCompat>
