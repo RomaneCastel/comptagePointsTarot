@@ -172,6 +172,29 @@ public class compteur extends AppCompatActivity {
                 }
             }
         });
+
+        //set OnCheckedChangeListener for poignees
+        LinearLayout poigneeShow = (LinearLayout) findViewById(R.id.poigneeShow);
+        //iterate through simple, double and triple
+        for (int i=0 ; i < poigneeShow.getChildCount() ; i++){
+            LinearLayout poignee = (LinearLayout) poigneeShow.getChildAt(i);
+            //iterate through attaque, defense
+            for (int j=1 ; j < poignee.getChildCount() ; j++){
+                ((ToggleButton) poignee.getChildAt(j)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if(b) {
+                            int j = ((LinearLayout) compoundButton.getParent()).indexOfChild(compoundButton);
+                            LinearLayout poigneeShow = (LinearLayout) findViewById(R.id.poigneeShow);
+                            for (int i = 0; i < poigneeShow.getChildCount(); i++) {
+                                ((ToggleButton) ((LinearLayout) poigneeShow.getChildAt(i)).getChildAt(j)).setChecked(false);
+                            }
+                            compoundButton.setChecked(true);
+                        }
+                    }
+                });
+            }
+        }
         /*ToggleButton attaqueSimple = (ToggleButton) findViewById(R.id.attaqueSimple);
         ToggleButton attaqueDouble = (ToggleButton) findViewById(R.id.attaqueDouble);
         ToggleButton attaqueTriple = (ToggleButton) findViewById(R.id.attaqueTriple);
