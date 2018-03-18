@@ -42,21 +42,6 @@ public class compteur extends AppCompatActivity {
         }
     };
 
-   /* private CompoundButton.OnCheckedChangeListener changeCheckerPoignee = new CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if(isChecked){
-                LinearLayout poignee = (LinearLayout) buttonView.getParent();
-                for(int i=0; i<3; i++){
-                    ((ToggleButton) ((LinearLayout) (poignee.getChildAt(i))).getChildAt(0)).setChecked(false);
-                }
-                buttonView.setChecked(true);
-                Log.i("oncheck", "utilise onchekpoignee");
-            }
-        }
-    };*/
-
-
     public void nbrjoueurs (){
         LinearLayout preneur = (LinearLayout) findViewById(R.id.bouttonPreneur);
         for(int i=0; i<joueurs.length; i++) {
@@ -102,13 +87,17 @@ public class compteur extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compteur);
         Log.i("lifeCycle","onCreate");
-        /*Button validate = (Button) findViewById(R.id.validate); */ //back to the game menu and save data in the menu
         Intent intent = getIntent();//objet spécial pour communiquer des variables d'une activité à une autre
         if(intent!=null){
             joueurs = intent.getStringArrayExtra("joueurs");
         }
         nbrjoueurs();
-        joueursAppelé();
+        if(joueurs.length ==5){
+            joueursAppelé();
+            TextView joueurAppele = (TextView) findViewById(R.id.Appele);
+            joueurAppele.setVisibility(View.VISIBLE);
+        }
+
         SeekBar scores = (SeekBar) findViewById(R.id.scores);
         TextView attaqueScore = (TextView) findViewById(R.id.attaqueScore);
         TextView defenseScore = (TextView) findViewById(R.id.defenseScore);
@@ -155,6 +144,27 @@ public class compteur extends AppCompatActivity {
                 }
             }
         });
+        ToggleButton seeChelem = (ToggleButton) findViewById(R.id.seeChelem);
+        seeChelem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                LinearLayout chelemShow = (LinearLayout) findViewById(R.id.chelemShow);
+                if(isChecked){
+                    chelemShow.setVisibility(View.VISIBLE);
+                }
+                else{
+                    chelemShow.setVisibility(View.GONE);
+                }
+            }
+        });
+        ToggleButton chelemSuccess = (ToggleButton) findViewById(R.id.chelemSuccess);
+        ToggleButton chelemNotAnnounced = (ToggleButton) findViewById(R.id.notAnnoncedChelem);
+        ToggleButton fallen = (ToggleButton) findViewById(R.id.fallen);
+        ToggleButton adversarySuccess = (ToggleButton) findViewById(R.id.adversarySuccess);
+        chelemSuccess.setOnCheckedChangeListener(changeChecker);
+        chelemNotAnnounced.setOnCheckedChangeListener(changeChecker);
+        fallen.setOnCheckedChangeListener(changeChecker);
+        adversarySuccess.setOnCheckedChangeListener(changeChecker);
         ToggleButton attaquePetit = (ToggleButton) findViewById(R.id.attaquePetit);
         ToggleButton defensePetit = (ToggleButton) findViewById(R.id.defensePetit);
         attaquePetit.setOnCheckedChangeListener(changeChecker);
@@ -195,18 +205,6 @@ public class compteur extends AppCompatActivity {
                 });
             }
         }
-        /*ToggleButton attaqueSimple = (ToggleButton) findViewById(R.id.attaqueSimple);
-        ToggleButton attaqueDouble = (ToggleButton) findViewById(R.id.attaqueDouble);
-        ToggleButton attaqueTriple = (ToggleButton) findViewById(R.id.attaqueTriple);
-        ToggleButton defenseSimple = (ToggleButton) findViewById(R.id.defenseSimple);
-        ToggleButton defenseDouble = (ToggleButton) findViewById(R.id.defenseDouble);
-        ToggleButton defenseTriple = (ToggleButton) findViewById(R.id.defenseTriple);
-        attaqueSimple.setOnCheckedChangeListener(changeCheckerPoignee);
-        attaqueDouble.setOnCheckedChangeListener(changeCheckerPoignee);
-        attaqueTriple.setOnCheckedChangeListener(changeCheckerPoignee);
-        defenseSimple.setOnCheckedChangeListener(changeCheckerPoignee);
-        defenseDouble.setOnCheckedChangeListener(changeCheckerPoignee);
-        defenseTriple.setOnCheckedChangeListener(changeCheckerPoignee);*/
         LinearLayout simpleMisere = (LinearLayout) findViewById(R.id.buttonMisereSimple);
         LinearLayout doubleMisere = (LinearLayout) findViewById(R.id.buttonMisereDouble);
         joueursMisere(simpleMisere);
