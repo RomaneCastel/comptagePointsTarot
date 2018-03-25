@@ -132,12 +132,26 @@
                         android:textAlignment="center" />
 
                     <TextView
+                        android:id="@+id/attaqueScoreInt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView" />
+
+                    <TextView
                         android:id="@+id/defenseScore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
                         android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/defenseScoreInt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView" />
                 </LinearLayout>
 
                 <SeekBar
@@ -478,11 +492,13 @@
 
     </LinearLayout>
 
-    <Button
+    <ToggleButton
         android:id="@+id/validate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Valider" />
+        android:text="Valider"
+        android:textOff="Valider"
+        android:textOn="Valider" />
 
 </android.support.v7.widget.LinearLayoutCompat>
